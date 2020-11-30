@@ -1,5 +1,7 @@
 import util
 import numpy as np
+import matplotlib.pyplot as plt 
+
 
 def calc_grad(X, Y, theta):
     """Compute the gradient of th loss with respect to theta."""
@@ -39,7 +41,7 @@ def logistic_regression(X, Y):
     return theta
 
 if __name__=='__main__':
-    Plot dataset A and B
+    # Plot dataset A and B
     Xa, Ya = util.load_csv('../data/ds1_a.csv', add_intercept=True)
     Xb, Yb = util.load_csv('../data/ds1_b.csv', add_intercept=True)
 
@@ -54,7 +56,8 @@ if __name__=='__main__':
     # dataset B does not converge
     # plot dataset B
     Xb, Yb = util.load_csv('../data/ds1_b.csv', add_intercept=False)
-    util.plot_points(Xb, (Yb == 1).astype(int), 'output/ds1_b.png')
-    
+    plt.figure()
+    util.plot_points(Xb, (Yb == 1).astype(int))
+    plt.savefig('output/ds1_b.png')    
 
 

@@ -81,7 +81,7 @@ def plot(x, y, theta, save_path, correction=1.0):
         correction: Correction factor to apply (Problem 2(e) only).
     """
     # Plot dataset
-    plt.figurea()
+    plt.figure()
     plt.plot(x[y == 1, -2], x[y == 1, -1], 'bx', linewidth=2)
     plt.plot(x[y == 0, -2], x[y == 0, -1], 'go', linewidth=2)
 
@@ -102,14 +102,16 @@ def plot_contour(predict_fn):
 
     for i in range(x.shape[0]):
         for j in range(y.shape[1]):
-            z[i, j] = predict_fn(x[i, j], y[i, j])
+            z[i, j] = predict_fn([x[i, j], y[i, j]])
 
     plt.contourf(x, y, z, levels=[-float('inf'), 0, float('inf')], colors=['orange', 'cyan'])
 
 def plot_points(x, y):
     """Plot some points where x are the coordinates and y is the label"""
+    # plt.figure()
     plt.scatter(x[y == 0, 0], x[y == 0, 1], marker='x', color='red')
     plt.scatter(x[y == 1, 0], x[y == 1, 1], marker='o', color='blue')
+    # plt.savefig(save_path)
 
 def write_json(filename, value):
     """Write the provided value as JSON to the given filename"""
